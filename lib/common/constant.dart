@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-const kPrimaryColor = Color(0xFFF1F7B5);
-const kSecondaryColor = Color(0xFFFD8A8A);
-const kTertiaryColor = Color(0xFFA8D1D1);
+const kPrimaryColor = Color(0xFF8EC3B0);
+const kSecondaryColor = Color(0xFFDEF5E5);
+const kTertiaryColor = Color(0xFFBCEAD5);
 
-const kLightBackgroundColor = Color(0xFFFAF8F1);
+// const kLightBackgroundColor = Color(0xFFFAF8F1);
+const kLightBackgroundColor = Color(0xFFDEF5E5);
 const kDarkBackgroundColor = Colors.black;
 
 const kSmallPadding = EdgeInsets.all(4);

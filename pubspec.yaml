@@ -39,6 +39,8 @@ dependencies:
   go_router: ^6.0.0
   google_fonts: ^3.0.1
   carousel_slider: ^4.2.1
+  http: ^0.13.5
+  fancy_shimmer_image: ^2.0.2
 
 dev_dependencies:
   flutter_test:

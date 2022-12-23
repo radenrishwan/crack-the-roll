@@ -31,6 +31,16 @@ class InitialApp extends StatelessWidget {
             size: 26,
           ),
         ),
+        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+          backgroundColor: kTertiaryColor,
+          elevation: 2,
+          selectedIconTheme: IconThemeData(
+            color: kPrimaryColor,
+          ),
+          unselectedIconTheme: IconThemeData(
+            color: kSecondaryColor,
+          ),
+        ),
       ),
       darkTheme: ThemeData.dark().copyWith(
         primaryColor: kPrimaryColor,

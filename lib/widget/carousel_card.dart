@@ -1,8 +1,15 @@
 import 'package:crack_the_roll/common/constant.dart';
+import 'package:crack_the_roll/data/model/short_movie.dart';
+import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 
 class CarouselCard extends StatelessWidget {
-  const CarouselCard({super.key});
+  final ShortMovie movie;
+
+  const CarouselCard({
+    super.key,
+    required this.movie,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -16,10 +23,14 @@ class CarouselCard extends StatelessWidget {
         children: [
           Container(
             width: MediaQuery.of(context).size.width,
+            height: 280,
             decoration: const BoxDecoration(color: Colors.amber),
-            child: Image.network(
-              'https://image.tmdb.org/t/p/original/5ScPNT6fHtfYJeWBajZciPV3hEL.jpg',
-              fit: BoxFit.cover,
+            child: FancyShimmerImage(
+              imageUrl: 'https://image.tmdb.org/t/p/original/${movie.posterPath}',
+              boxFit: BoxFit.cover,
+              shimmerBaseColor: kPrimaryColor,
+              shimmerHighlightColor: kSecondaryColor,
+              shimmerBackColor: kLightBackgroundColor,
             ),
           ),
           Positioned(
@@ -33,7 +44,7 @@ class CarouselCard extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
-                    'Avatar : The Way of Water',
+                    movie.title,
                     style: Theme.of(context).textTheme.titleMedium!.copyWith(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
@@ -49,7 +60,7 @@ class CarouselCard extends StatelessWidget {
                       ),
                       SizedBox(width: kSmallPadding.right),
                       Text(
-                        '2021-09-01',
+                        '${movie.releaseDate.day}/${movie.releaseDate.month}/${movie.releaseDate.year}',
                         style: Theme.of(context).textTheme.bodySmall!.copyWith(
                               color: Colors.white,
                               fontWeight: FontWeight.w500,
@@ -63,7 +74,7 @@ class CarouselCard extends StatelessWidget {
                       ),
                       SizedBox(width: kSmallPadding.right),
                       Text(
-                        'Action',
+                        movie.genreIds.toString(), // TODO: implement genre
                         style: Theme.of(context).textTheme.bodySmall!.copyWith(
                               color: Colors.white,
                               fontWeight: FontWeight.w500,
@@ -96,7 +107,7 @@ class CarouselCard extends StatelessWidget {
                   ),
                   SizedBox(width: kSmallPadding.right),
                   Text(
-                    '8.5',
+                    movie.voteAverage.toString(),
                     style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                           color: kPrimaryColor,
                           fontWeight: FontWeight.bold,
