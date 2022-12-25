@@ -25,10 +25,9 @@ class CarouselCard extends StatelessWidget {
         ),
         child: Stack(
           children: [
-            Container(
+            SizedBox(
               width: MediaQuery.of(context).size.width,
               height: 280,
-              decoration: const BoxDecoration(color: Colors.amber),
               child: FancyShimmerImage(
                 imageUrl: 'https://image.tmdb.org/t/p/w300/${movie.posterPath}',
                 boxFit: BoxFit.cover,

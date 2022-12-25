@@ -154,7 +154,15 @@ class HomeScreen extends StatelessWidget {
                         ...List<Widget>.generate(
                           8,
                           (index) {
-                            return MovieCard(movie: result[index]);
+                            return MovieCard(
+                              movie: result[index],
+                              onTap: () {
+                                GoRouter.of(context).pushNamed(
+                                  'detail',
+                                  params: {'id': result[index].id.toString()},
+                                );
+                              },
+                            );
                           },
                         ),
                       ],
@@ -218,7 +226,15 @@ class HomeScreen extends StatelessWidget {
                         ...List<Widget>.generate(
                           8,
                           (index) {
-                            return MovieCard(movie: result[index]);
+                            return MovieCard(
+                              movie: result[index],
+                              onTap: () {
+                                GoRouter.of(context).pushNamed(
+                                  'detail',
+                                  params: {'id': result[index].id.toString()},
+                                );
+                              },
+                            );
                           },
                         ),
                       ],
