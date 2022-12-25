@@ -1,10 +1,13 @@
 import 'dart:developer';
 
 import 'package:crack_the_roll/common/constant.dart';
+import 'package:crack_the_roll/data/domain/bookmark.dart';
 import 'package:crack_the_roll/data/model/movie.dart';
 import 'package:crack_the_roll/data/service/movie_service.dart';
+import 'package:crack_the_roll/modules/bookmark/bookmark_provider.dart';
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class DetailScreen extends StatelessWidget {
   final int movieId;
@@ -15,16 +18,54 @@ class DetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isFavorite = false;
+
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
         actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.favorite_border,
-              size: 28,
-            ),
+          FutureBuilder<bool>(
+            future: context.read<BookmarkProvider>().checkBookmark(movieId.toString()),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState != ConnectionState.done) {
+                return Container();
+              }
+
+              isFavorite = snapshot.data!;
+              log(isFavorite.toString());
+
+              return StatefulBuilder(
+                builder: (context, setState) {
+                  return IconButton(
+                    onPressed: () async {
+                      if (isFavorite) {
+                        context.read<BookmarkProvider>().delete(movieId.toString());
+                      } else {
+                        await MovieService().getMovie(movieId.toString()).then((movie) {
+                          Bookmark bookmark = Bookmark(
+                            movieId: movieId.toString(),
+                            releaseDate:
+                                '${movie.releaseDate.day}/${movie.releaseDate.month}/${movie.releaseDate.year}',
+                            title: movie.title,
+                            posterPath: movie.posterPath,
+                            voteAverage: movie.voteAverage.toString(),
+                          );
+
+                          context.read<BookmarkProvider>().create(bookmark);
+                        });
+                      }
+                      setState(() {
+                        isFavorite = !isFavorite;
+                      });
+                    },
+                    icon: Icon(
+                      isFavorite ? Icons.bookmark_added : Icons.bookmark_add_outlined,
+                      size: 28,
+                    ),
+                  );
+                },
+              );
+            },
           ),
         ],
       ),
@@ -40,9 +81,9 @@ class DetailScreen extends StatelessWidget {
           }
 
           if (snapshot.connectionState != ConnectionState.done) {
-            return const SizedBox(
-              height: 280,
-              child: Center(
+            return SizedBox(
+              height: MediaQuery.of(context).size.height,
+              child: const Center(
                 child: CircularProgressIndicator(),
               ),
             );
@@ -112,10 +153,14 @@ class DetailScreen extends StatelessWidget {
                                 ),
                               ),
                               SizedBox(height: kSmallPadding.top),
-                              Text(
-                                movie.tagline,
-                                style: Theme.of(context).textTheme.bodyText2!,
-                              ),
+                              movie.tagline.isEmpty
+                                  ? const SizedBox()
+                                  : Text(
+                                      movie.tagline,
+                                      style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                                            color: Colors.white,
+                                          ),
+                                    ),
                               SizedBox(height: kDefaultPadding.top),
                               Row(
                                 mainAxisSize: MainAxisSize.min,

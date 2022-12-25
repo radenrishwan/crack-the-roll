@@ -1,5 +1,6 @@
 import 'package:crack_the_roll/bottom_navigation.dart';
 import 'package:crack_the_roll/main.dart';
+import 'package:crack_the_roll/modules/bookmark/bookmark_screen.dart';
 import 'package:crack_the_roll/modules/details/details_screen.dart';
 import 'package:crack_the_roll/modules/discover/discover_screen.dart';
 import 'package:crack_the_roll/modules/home/home_screen.dart';
@@ -43,15 +44,11 @@ class IRouteConfig {
           GoRoute(
             name: 'discover',
             path: discover,
-            builder: (context, state) => DiscoverScreen(),
+            builder: (context, state) => const DiscoverScreen(),
           ),
           GoRoute(
             path: bookmark,
-            builder: (context, state) => Scaffold(
-              appBar: AppBar(
-                title: const Text('Bookmark'),
-              ),
-            ),
+            builder: (context, state) => const BookmarkScreen(),
           ),
           GoRoute(
             name: 'settings',

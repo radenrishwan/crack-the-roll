@@ -2,11 +2,11 @@ import 'package:crack_the_roll/common/constant.dart';
 import 'package:flutter/material.dart';
 
 class TitleWidget extends StatelessWidget {
-  List<Widget>? trailing;
+  final List<Widget>? trailing;
   final String title;
   final IconData? icon;
   final Color? iconColor;
-  TitleWidget({super.key, required this.title, this.icon, this.iconColor, this.trailing});
+  const TitleWidget({super.key, required this.title, this.icon, this.iconColor, this.trailing});
 
   @override
   Widget build(BuildContext context) {

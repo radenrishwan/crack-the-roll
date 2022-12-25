@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 
 class MovieCard extends StatelessWidget {
   final ShortMovie movie;
-  bool showRating = true;
+  final bool showRating;
   final VoidCallback onTap;
-  MovieCard({super.key, required this.movie, this.showRating = true, required this.onTap});
+  const MovieCard({super.key, required this.movie, this.showRating = true, required this.onTap});
 
   @override
   Widget build(BuildContext context) {

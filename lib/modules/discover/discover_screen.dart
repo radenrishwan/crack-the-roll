@@ -24,6 +24,7 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
         context.read<DiscoverProvider>().loadMoreMovies();
       }
     });
+    super.initState();
   }
 
   @override
@@ -52,9 +53,9 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
                 }
 
                 if (snapshot.connectionState != ConnectionState.done) {
-                  return const SizedBox(
-                    height: 280,
-                    child: Center(
+                  return SizedBox(
+                    height: MediaQuery.of(context).size.height,
+                    child: const Center(
                       child: CircularProgressIndicator(),
                     ),
                   );
