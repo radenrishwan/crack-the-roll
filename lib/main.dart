@@ -32,7 +32,7 @@ class InitialApp extends StatelessWidget {
           ),
         ),
         bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-          backgroundColor: kTertiaryColor,
+          backgroundColor: kPrimaryColor,
           elevation: 2,
           selectedIconTheme: IconThemeData(
             color: kPrimaryColor,

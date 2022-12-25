@@ -1,3 +1,4 @@
+import 'package:crack_the_roll/common/constant.dart';
 import 'package:crack_the_roll/common/route.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -18,6 +19,10 @@ class _BottomNavigationState extends State<BottomNavigation> {
     BottomNavigationItem(
       icon: const Icon(Icons.home),
       initialLocation: IRouteConfig.home,
+    ),
+    BottomNavigationItem(
+      icon: const Icon(Icons.explore),
+      initialLocation: IRouteConfig.discover,
     ),
     BottomNavigationItem(
       icon: const Icon(Icons.bookmark),
@@ -48,8 +53,11 @@ class _BottomNavigationState extends State<BottomNavigation> {
       body: widget.child,
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: selectedIndex,
+        backgroundColor: kSecondaryColor,
         onTap: (value) => moveScreen(context, value),
         items: tab,
+        selectedItemColor: Theme.of(context).primaryColor,
+        unselectedItemColor: Colors.grey.shade400,
       ),
     );
   }

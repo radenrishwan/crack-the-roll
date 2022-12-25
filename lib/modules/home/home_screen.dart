@@ -8,6 +8,7 @@ import 'package:crack_the_roll/widget/carousel_card.dart';
 import 'package:crack_the_roll/widget/movie_card.dart';
 import 'package:crack_the_roll/widget/title_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -15,32 +16,34 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Padding(
+          padding: kLargePadding,
+          child: Text('Crack The Roll.'),
+        ),
+        titleSpacing: 0,
+        actions: [
+          Padding(
+            padding: kLargePadding.copyWith(left: 0, top: 0, bottom: 0),
+            child: Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: kDefaultBorderRadius,
+              ),
+              child: IconButton(
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.search,
+                  size: 28,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              // TODO: implement sliver app bar
-              padding: kLargePadding,
-              child: AppBar(
-                title: const Text('Crack The Roll.'),
-                titleSpacing: 0,
-                actions: [
-                  Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: kDefaultBorderRadius,
-                    ),
-                    child: IconButton(
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.search,
-                        size: 28,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
             Padding(
               padding: kLargePadding.copyWith(top: 0),
               child: TitleWidget(
@@ -71,7 +74,7 @@ class HomeScreen extends StatelessWidget {
                 final movies = snapshot.data!;
 
                 return CarouselSlider.builder(
-                  itemCount: movies.length,
+                  itemCount: 5,
                   options: CarouselOptions(
                     autoPlay: true,
                     enlargeCenterPage: true,
@@ -82,6 +85,12 @@ class HomeScreen extends StatelessWidget {
                     return Builder(
                       builder: (BuildContext context) {
                         return CarouselCard(
+                          onTap: () {
+                            GoRouter.of(context).pushNamed(
+                              'detail',
+                              params: {'id': movies[index].id.toString()},
+                            );
+                          },
                           movie: movies[index],
                         );
                       },
@@ -143,7 +152,7 @@ class HomeScreen extends StatelessWidget {
                     child: Row(
                       children: [
                         ...List<Widget>.generate(
-                          result.length,
+                          8,
                           (index) {
                             return MovieCard(movie: result[index]);
                           },
@@ -207,7 +216,7 @@ class HomeScreen extends StatelessWidget {
                     child: Row(
                       children: [
                         ...List<Widget>.generate(
-                          result.length,
+                          8,
                           (index) {
                             return MovieCard(movie: result[index]);
                           },

@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 
 class MovieCard extends StatelessWidget {
   final ShortMovie movie;
-  const MovieCard({super.key, required this.movie});
+  bool showRating = true;
+  MovieCard({super.key, required this.movie, this.showRating = true});
 
   @override
   Widget build(BuildContext context) {
@@ -16,14 +17,13 @@ class MovieCard extends StatelessWidget {
         children: [
           Container(
             decoration: BoxDecoration(
-              color: Colors.red,
               borderRadius: kDefaultBorderRadius,
             ),
             child: ClipRRect(
               borderRadius: kDefaultBorderRadius,
               child: FancyShimmerImage(
                 width: 170,
-                imageUrl: 'https://image.tmdb.org/t/p/original/${movie.posterPath}',
+                imageUrl: 'https://image.tmdb.org/t/p/w200/${movie.posterPath}',
                 boxFit: BoxFit.cover,
                 shimmerBaseColor: kPrimaryColor,
                 shimmerHighlightColor: kSecondaryColor,
@@ -31,37 +31,39 @@ class MovieCard extends StatelessWidget {
               ),
             ),
           ),
-          Positioned(
-            top: 50,
-            right: 0,
-            child: Container(
-              padding: kSmallPadding,
-              decoration: BoxDecoration(
-                  color: Colors.black.withOpacity(0.3),
-                  borderRadius: kDefaultBorderRadius.copyWith(
-                    topRight: const Radius.circular(0),
-                    bottomRight: const Radius.circular(0),
-                  )),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Icon(
-                    Icons.star,
-                    color: kPrimaryColor,
-                    size: Theme.of(context).textTheme.headline5!.fontSize,
-                  ),
-                  SizedBox(width: kSmallPadding.right),
-                  Text(
-                    '8.5',
-                    style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+          showRating
+              ? Positioned(
+                  top: 50,
+                  right: 0,
+                  child: Container(
+                    padding: kSmallPadding,
+                    decoration: BoxDecoration(
+                        color: Colors.black.withOpacity(0.3),
+                        borderRadius: kDefaultBorderRadius.copyWith(
+                          topRight: const Radius.circular(0),
+                          bottomRight: const Radius.circular(0),
+                        )),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(
+                          Icons.star,
                           color: kPrimaryColor,
-                          fontWeight: FontWeight.bold,
+                          size: Theme.of(context).textTheme.headline5!.fontSize,
                         ),
+                        SizedBox(width: kSmallPadding.right),
+                        Text(
+                          '8.5',
+                          style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                                color: kPrimaryColor,
+                                fontWeight: FontWeight.bold,
+                              ),
+                        ),
+                      ],
+                    ),
                   ),
-                ],
-              ),
-            ),
-          ),
+                )
+              : const SizedBox(),
         ],
       ),
     );
