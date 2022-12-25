@@ -1,9 +1,20 @@
 import 'package:crack_the_roll/common/constant.dart';
 import 'package:crack_the_roll/common/route.dart';
+import 'package:crack_the_roll/modules/discover/discorver_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const InitialApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider<DiscoverProvider>(
+          create: (context) => DiscoverProvider(),
+        )
+      ],
+      child: const InitialApp(),
+    ),
+  );
 }
 
 class InitialApp extends StatelessWidget {

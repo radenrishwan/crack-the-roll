@@ -43,7 +43,7 @@ class IRouteConfig {
           GoRoute(
             name: 'discover',
             path: discover,
-            builder: (context, state) => const DiscoverScreen(),
+            builder: (context, state) => DiscoverScreen(),
           ),
           GoRoute(
             path: bookmark,

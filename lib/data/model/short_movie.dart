@@ -1,7 +1,7 @@
 class ShortMovie {
   ShortMovie({
     required this.adult,
-    required this.backdropPath,
+    this.backdropPath,
     required this.genreIds,
     required this.id,
     required this.originalLanguage,
@@ -17,7 +17,7 @@ class ShortMovie {
   });
 
   final bool adult;
-  final String backdropPath;
+  String? backdropPath;
   final List<int> genreIds;
   final int id;
   final String originalLanguage;
