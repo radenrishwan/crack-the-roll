@@ -9,6 +9,7 @@ import 'package:crack_the_roll/modules/bookmark/bookmark_screen.dart';
 import 'package:crack_the_roll/modules/details/details_screen.dart';
 import 'package:crack_the_roll/modules/discover/discover_screen.dart';
 import 'package:crack_the_roll/modules/home/home_screen.dart';
+import 'package:crack_the_roll/modules/settings/settings_screen.dart';
 import 'package:crack_the_roll/widget/default_alert.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -103,15 +104,7 @@ class IRouteConfig {
           GoRoute(
             name: 'settings',
             path: settings,
-            builder: (context, state) => Scaffold(
-                body: Center(
-              child: TextButton(
-                onPressed: () {
-                  FirebaseAuth.instance.signOut();
-                },
-                child: const Text('Sign Out'),
-              ),
-            )),
+            builder: (context, state) => const SettingsScreen(),
           ),
         ],
       ),

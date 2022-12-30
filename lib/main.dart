@@ -4,6 +4,7 @@ import 'package:crack_the_roll/firebase_options.dart';
 import 'package:crack_the_roll/modules/authentication/authentication_provider.dart';
 import 'package:crack_the_roll/modules/bookmark/bookmark_provider.dart';
 import 'package:crack_the_roll/modules/discover/discorver_provider.dart';
+import 'package:crack_the_roll/modules/settings/settings_provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -22,7 +23,12 @@ void main() async {
         ChangeNotifierProvider<BookmarkProvider>(
           create: (context) => BookmarkProvider(),
         ),
-        ChangeNotifierProvider<AuthenticationProvider>(create: (context) => AuthenticationProvider()),
+        ChangeNotifierProvider<AuthenticationProvider>(
+          create: (context) => AuthenticationProvider(),
+        ),
+        ChangeNotifierProvider<SettingsProvider>(
+          create: (context) => SettingsProvider(),
+        ),
       ],
       child: const InitialApp(),
     ),

@@ -9,8 +9,8 @@ import 'package:go_router/go_router.dart';
 class RegisterScreen extends StatelessWidget {
   RegisterScreen({super.key});
 
-  final TextEditingController emailController = TextEditingController(text: 'yamisok@gmail.com');
-  final TextEditingController passwordController = TextEditingController(text: '123123123');
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   final FocusNode passwordNode = FocusNode();
 
