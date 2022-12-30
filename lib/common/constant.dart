@@ -14,6 +14,7 @@ const kDefaultPadding = EdgeInsets.all(12);
 const kLargePadding = EdgeInsets.all(24);
 
 final kDefaultBorderRadius = BorderRadius.circular(8);
+final kLargeBorderRadius = BorderRadius.circular(12);
 
 final kTitleFontFamily = GoogleFonts.alfaSlabOne();
 final kDefaultFontFamily = GoogleFonts.bebasNeue();

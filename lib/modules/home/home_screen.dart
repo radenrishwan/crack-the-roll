@@ -46,7 +46,7 @@ class HomeScreen extends StatelessWidget {
           children: [
             Padding(
               padding: kLargePadding.copyWith(top: 0),
-              child: TitleWidget(
+              child: const TitleWidget(
                 title: 'Upcoming Movies',
                 icon: Icons.movie,
                 iconColor: kPrimaryColor,
