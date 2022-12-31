@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "15912739381",
+    "project_id": "crack-the-roll",
+    "storage_bucket": "crack-the-roll.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:15912739381:android:448894c88b35c682c6877c",
+        "android_client_info": {
+          "package_name": "com.example.crack_the_roll"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "15912739381-17meijvs4gcsik9ac56hca516945el79.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfsUnnm6FYfbIgVXUfuSAplFeGpSBdGuk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "15912739381-17meijvs4gcsik9ac56hca516945el79.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
